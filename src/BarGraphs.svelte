@@ -188,7 +188,7 @@
                 Composition of Reports
             </h2>
 
-            <p>{$currentYear}</p>
+            <p>{barOption === "year" ? $currentYear : `1940 - ${$currentYear}`}</p>
         </div>
 
         <div id="selector-container">
