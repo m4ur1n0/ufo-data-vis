@@ -9,7 +9,7 @@
     let topShapes = $state([]);
     let topStates = $state([]);
     let cumulativeData = $state({});
-    let barOption = $state("year");
+    let barOption = $state("cumulative");
 
     // tweened values (one per shape) top 3 shapes
     const tweenShape1 = tweened(0, {

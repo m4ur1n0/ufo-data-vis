@@ -1,22 +1,44 @@
 <script>
     import BarGraphs from './BarGraphs.svelte';
     import Home from './Home.svelte'
+    import Scrolly from './Scrolly.svelte';
+
+    let visualization = $state("dashboard");
+
 </script>
 
-<main>
-    <div id="main-vis-container">
-        
-        <!-- <div class="stars" /> -->
-
-        <Home />
-
-        <BarGraphs />
+<div>
+    <div id="selector-container">
+        <select bind:value={visualization}>
+            <option value="dashboard">Timeline Dashboard</option>
+            <option value="scrolly">Data Overview</option>
+        </select>
     </div>
-</main>
+
+    {#if visualization === "dashboard"}
+        <main>
+            <div id="main-vis-container">
+
+                <div class="stars" />
+
+                <Home />
+
+                <BarGraphs />
+            </div>
+        </main>
+    {:else}
+        <!-- <div id="main-scrolly-container"> -->
+
+            <Scrolly />
+                
+        <!-- </div> -->
+    {/if}
+</div>
 
 <style>
   main {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -32,6 +54,15 @@
     /* border : 2px solid white; */
 
     overflow-x: hidden;
+  }
+
+  #selector-container {
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100%;
+    padding-top : 1%;
+    z-index: 50;
   }
 
   #main-vis-container {
